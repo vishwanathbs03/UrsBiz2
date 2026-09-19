@@ -1,0 +1,26 @@
+# =============================================================================
+# UrsBiz — root compose (development convenience).
+#
+# This file is a THIN INCLUDE that delegates the real service definition to
+# deployment/docker-compose.production.yml — the SINGLE canonical compose file
+# for UrsBiz (per Sprint H7.8A).
+#
+# To start the stack locally with this include:
+#
+#   docker compose \
+#     -f docker-compose.yml \
+#     -f deployment/docker-compose.production.yml \
+#     --env-file deployment/env/.env.production.example \
+#     up -d
+#
+# For a quick dev loop without the production hardening overlay, the same
+# canonical file works on its own:
+#
+#   docker compose -f deployment/docker-compose.production.yml up -d
+#
+# This root file intentionally contains NO service definitions of its own so
+# there is exactly one source of truth.
+# =============================================================================
+
+include:
+  - deployment/docker-compose.production.yml
